@@ -2,11 +2,11 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
-import { LanguageSelector } from './components/LanguageSelector';
-import { ServerStatusBadge } from './components/ServerStatusBadge';
-import { LoginForm } from './components/LoginForm';
-import { LoginMeta } from './components/LoginMeta';
-import { TrailerAside } from './components/TrailerAside';
+import { LanguageSelector } from '@/components/LanguageSelector';
+import { ServerStatusBadge } from '@/components/ServerStatusBadge';
+import { LoginForm } from '@/components/LoginForm';
+import { LoginMeta } from '@/components/LoginMeta';
+import { TrailerAside } from '@/components/TrailerAside';
 import type { SupportedLanguage, ServerUniverseOption } from './types';
 
 const INITIAL_SERVER: ServerUniverseOption = {

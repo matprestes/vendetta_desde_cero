@@ -1,8 +1,8 @@
 'use client';
 
-import { useState, useTransition, useActionState, useEffect } from 'react';
-import { loginAction } from '../actions';
-import type { ServerUniverseOption, LoginFormState } from '../types';
+import { useState, useActionState } from 'react';
+import { loginAction } from '@/app/login/actions';
+import type { ServerUniverseOption, LoginFormState } from '@/app/login/types';
 
 interface LoginFormProps {
   onServerChange: (server: ServerUniverseOption) => void;

@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import type { SupportedLanguage, LanguageInfo } from '../types';
+import type { SupportedLanguage, LanguageInfo } from '@/app/login/types';
 
 interface LanguageSelectorProps {
   currentLang: SupportedLanguage;
