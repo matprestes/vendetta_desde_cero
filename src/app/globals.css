@@ -1,0 +1,592 @@
+@import "tailwindcss";
+
+:root {
+  --vendetta-bg: #090a0d;
+  --vendetta-surface: #13161c;
+  --vendetta-surface-border: #272c38;
+  --vendetta-gold: #c5a059;
+  --vendetta-gold-hover: #dfba72;
+  --vendetta-green: #22c55e;
+  --vendetta-green-glow: rgba(34, 197, 94, 0.4);
+  --vendetta-crimson: #8f1d22;
+  --vendetta-crimson-hover: #b0262c;
+  --vendetta-text: #e2e8f0;
+  --vendetta-text-muted: #94a3b8;
+}
+
+body {
+  background-color: var(--vendetta-bg);
+  color: var(--vendetta-text);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Background Atmosphere */
+.vendetta-login-body {
+  background: 
+    radial-gradient(ellipse at 50% 15%, rgba(65, 30, 20, 0.25) 0%, transparent 60%),
+    radial-gradient(ellipse at 50% 80%, rgba(20, 28, 40, 0.4) 0%, transparent 70%),
+    #08090c;
+  background-attachment: fixed;
+  background-size: cover;
+  min-height: 100vh;
+}
+
+.vendetta-login-main {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 24px 16px 48px 16px;
+  box-sizing: border-box;
+}
+
+.vendetta-login-hero {
+  width: 100%;
+  max-width: 960px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Logo */
+.vendetta-login-logo {
+  width: 100%;
+  max-width: 520px;
+  margin-bottom: 24px;
+  display: flex;
+  justify-content: center;
+  filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.8));
+}
+
+.vendetta-logo-image {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  max-height: 140px;
+}
+
+/* Main Layout Grid */
+.vendetta-login-stack {
+  width: 100%;
+}
+
+.vendetta-login-row {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  width: 100%;
+}
+
+@media (min-width: 860px) {
+  .vendetta-login-row {
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+  }
+}
+
+/* Primary Form Column */
+.vendetta-login-primary {
+  flex: 1;
+  max-width: 440px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* Main Panel */
+.vendetta-login-panel {
+  background: linear-gradient(180deg, rgba(24, 27, 36, 0.95) 0%, rgba(16, 18, 24, 0.98) 100%);
+  border: 1px solid #323847;
+  border-radius: 8px;
+  padding: 24px 28px;
+  box-shadow: 
+    0 12px 30px rgba(0, 0, 0, 0.75),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  box-sizing: border-box;
+}
+
+/* Language selector flags */
+.vendetta-lang-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  padding-bottom: 18px;
+  margin-bottom: 18px;
+  border-bottom: 1px solid #232733;
+}
+
+.vendetta-lang-flag {
+  background: transparent;
+  border: 1px solid transparent;
+  padding: 3px 4px;
+  border-radius: 4px;
+  cursor: pointer;
+  opacity: 0.65;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.vendetta-lang-flag:hover {
+  opacity: 1;
+  transform: translateY(-1px);
+}
+
+.vendetta-lang-flag.is-active {
+  opacity: 1;
+  border-color: var(--vendetta-gold);
+  background: rgba(197, 160, 89, 0.15);
+  box-shadow: 0 0 8px rgba(197, 160, 89, 0.3);
+}
+
+.vendetta-flag-img {
+  border-radius: 2px;
+  display: block;
+}
+
+/* Server Status Block */
+.vendetta-server-block {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  padding: 10px 14px;
+  background: rgba(10, 12, 16, 0.7);
+  border: 1px solid #282d3b;
+  border-radius: 6px;
+}
+
+.vendetta-server-label {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #94a3b8;
+}
+
+.vendetta-server-glow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.vendetta-status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--vendetta-green);
+  box-shadow: 0 0 10px var(--vendetta-green);
+  animation: pulse-glow 2s infinite ease-in-out;
+}
+
+.vendetta-server-glow.is-closed .vendetta-status-dot {
+  background-color: #ef4444;
+  box-shadow: 0 0 10px #ef4444;
+}
+
+.vendetta-server-status-text {
+  font-size: 13px;
+  font-weight: 700;
+  color: #4ade80;
+  text-shadow: 0 0 8px rgba(74, 222, 128, 0.4);
+}
+
+.vendetta-server-glow.is-closed .vendetta-server-status-text {
+  color: #f87171;
+  text-shadow: 0 0 8px rgba(248, 113, 113, 0.4);
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(0.9);
+  }
+}
+
+/* Form Styles */
+.vendetta-login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.vendetta-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.vendetta-label {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #cbd5e1;
+}
+
+.vendetta-input-wrap {
+  position: relative;
+  width: 100%;
+}
+
+.vendetta-input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px 14px;
+  background: #0b0d13;
+  border: 1px solid #2e3444;
+  border-radius: 5px;
+  color: #f8fafc;
+  font-size: 14px;
+  transition: all 0.2s ease;
+  outline: none;
+}
+
+.vendetta-input:focus {
+  border-color: var(--vendetta-gold);
+  box-shadow: 0 0 0 2px rgba(197, 160, 89, 0.2);
+  background: #0f1118;
+}
+
+.vendetta-input::placeholder {
+  color: #64748b;
+  font-size: 13px;
+}
+
+.vendetta-select {
+  appearance: none;
+  cursor: pointer;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23c5a059' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 16px;
+  padding-right: 36px;
+}
+
+.vendetta-select option {
+  background: #12151d;
+  color: #f8fafc;
+  padding: 8px;
+}
+
+/* Enter Submit Button */
+.vendetta-enter {
+  width: 100%;
+  margin-top: 6px;
+  padding: 12px 16px;
+  background: linear-gradient(180deg, #a72328 0%, #680e12 100%);
+  border: 1px solid #d4353b;
+  border-radius: 5px;
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  box-shadow: 
+    0 4px 12px rgba(139, 24, 27, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  transition: all 0.15s ease;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+}
+
+.vendetta-enter:hover:not(:disabled) {
+  background: linear-gradient(180deg, #c02b31 0%, #7d1116 100%);
+  border-color: #f87171;
+  box-shadow: 
+    0 6px 16px rgba(180, 30, 35, 0.55),
+    inset 0 1px 0 rgba(255, 255, 255, 0.35);
+  transform: translateY(-1px);
+}
+
+.vendetta-enter:active:not(:disabled) {
+  transform: translateY(1px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+}
+
+.vendetta-enter.is-disabled,
+.vendetta-enter:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  filter: grayscale(0.6);
+  transform: none !important;
+}
+
+/* Quick Demo helpers */
+.vendetta-quick-demo {
+  margin-top: 4px;
+  padding: 8px 10px;
+  background: rgba(10, 13, 18, 0.5);
+  border: 1px dashed #282e3c;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.vendetta-quick-demo__title {
+  font-size: 11px;
+  color: #94a3b8;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.vendetta-quick-demo__buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.vendetta-demo-pill {
+  font-size: 11px;
+  color: var(--vendetta-gold);
+  background: rgba(197, 160, 89, 0.1);
+  border: 1px solid rgba(197, 160, 89, 0.3);
+  padding: 4px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.vendetta-demo-pill:hover {
+  background: rgba(197, 160, 89, 0.25);
+  border-color: var(--vendetta-gold);
+}
+
+/* Links & hints */
+.vendetta-form-links {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px solid #232733;
+  font-size: 13px;
+}
+
+.vendetta-form-links a {
+  color: var(--vendetta-gold);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.vendetta-form-links a:hover {
+  color: var(--vendetta-gold-hover);
+  text-decoration: underline;
+}
+
+.vendetta-terms-hint {
+  font-size: 11px;
+  color: #64748b;
+  text-align: center;
+  margin-top: 14px;
+  margin-bottom: 0;
+  line-height: 1.4;
+}
+
+/* Alerts */
+.vendetta-alert {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border-radius: 5px;
+  font-size: 13px;
+  margin-bottom: 14px;
+}
+
+.vendetta-alert--error {
+  background: rgba(153, 27, 27, 0.2);
+  border: 1px solid #ef4444;
+  color: #fca5a5;
+}
+
+.vendetta-alert--success {
+  background: rgba(22, 101, 52, 0.2);
+  border: 1px solid #22c55e;
+  color: #86efac;
+}
+
+.vendetta-alert-icon {
+  font-weight: 900;
+  font-size: 14px;
+}
+
+/* Metadata Footer below panel */
+.vendetta-login-meta {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: #838e9e;
+  text-align: center;
+}
+
+.vendetta-meta-line {
+  margin: 0;
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.vendetta-meta-line--inline {
+  display: flex;
+  justify-content: center;
+}
+
+.vendetta-meta-num {
+  color: #e2e8f0;
+  font-weight: 700;
+}
+
+.vendetta-meta-version-link {
+  color: var(--vendetta-gold);
+  text-decoration: none;
+}
+
+.vendetta-meta-version-link:hover {
+  text-decoration: underline;
+}
+
+.vendetta-meta-legal {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.vendetta-meta-legal a {
+  color: #71717a;
+  text-decoration: none;
+}
+
+.vendetta-meta-legal a:hover {
+  color: #d4d4d8;
+  text-decoration: underline;
+}
+
+.vendetta-meta-dot {
+  color: #52525b;
+}
+
+.vendetta-social-row {
+  display: flex;
+  gap: 16px;
+  margin-top: 6px;
+}
+
+.vendetta-social {
+  color: var(--vendetta-gold);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 12px;
+}
+
+.vendetta-social:hover {
+  color: var(--vendetta-gold-hover);
+  text-decoration: underline;
+}
+
+/* Aside: Trailer Box and APK Teaser */
+.vendetta-trailer-aside {
+  flex: 1;
+  max-width: 440px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.vendetta-trailer-box {
+  background: linear-gradient(180deg, rgba(24, 27, 36, 0.95) 0%, rgba(16, 18, 24, 0.98) 100%);
+  border: 1px solid #323847;
+  border-radius: 8px;
+  padding: 20px 24px;
+  box-shadow: 
+    0 12px 30px rgba(0, 0, 0, 0.75),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  box-sizing: border-box;
+}
+
+.vendetta-trailer-title {
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #e2e8f0;
+  margin: 0 0 14px 0;
+  text-align: center;
+  border-bottom: 1px solid #232733;
+  padding-bottom: 10px;
+}
+
+.vendetta-trailer-frame {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%; /* 16:9 ratio */
+  height: 0;
+  overflow: hidden;
+  border-radius: 6px;
+  border: 1px solid #232733;
+  background: #000000;
+}
+
+.vendetta-trailer-iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* APK Teaser */
+.vendetta-apk-teaser {
+  margin-top: 18px;
+  display: flex;
+  justify-content: center;
+}
+
+.vendetta-apk-teaser__link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  transition: transform 0.2s ease;
+}
+
+.vendetta-apk-teaser__link:hover {
+  transform: translateY(-2px);
+}
+
+.vendetta-apk-teaser__icon {
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+  border: 1px solid #323847;
+  transition: border-color 0.2s ease;
+}
+
+.vendetta-apk-teaser__link:hover .vendetta-apk-teaser__icon {
+  border-color: var(--vendetta-gold);
+}
+
+.vendetta-apk-teaser__label {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--vendetta-gold);
+  letter-spacing: 0.05em;
+}
+
+.vendetta-apk-teaser__link:hover .vendetta-apk-teaser__label {
+  color: var(--vendetta-gold-hover);
+}

@@ -1,0 +1,6 @@
+{
+  "name": "Vendetta - Mafia MMORTS",
+  "description": "Juego de estrategia mafia por navegador Vendetta Legacy. Gestiona tu familia criminal, edificios, tropas y conquista la ciudad.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
